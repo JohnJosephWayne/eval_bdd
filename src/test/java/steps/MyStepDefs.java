@@ -111,4 +111,19 @@ public class MyStepDefs {
             }
         }
     }
+
+    @And("check the box")
+    public void checkTheBox() {
+        WebElement checkbox = driver.findElement(By.id("mail_activation"));
+        if (checkbox.isSelected()) {
+            checkbox.click(); // the checkbox doesn't be selected to add a user
+        }
+    }
+    @Then("i see the confirmation message {string}")
+    public void iSeeTheConfirmationMessage(String expectedMessage) {
+        WebElement messageElement = driver.findElement(By.xpath("/html/body/div[2]/font"));
+        String actualMessage = messageElement.getText();
+        Assert.assertEquals("Confirmation message mismatch!", expectedMessage, actualMessage);
+    }
+
 }
