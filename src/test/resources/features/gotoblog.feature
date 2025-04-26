@@ -1,4 +1,4 @@
-Feature: Logout
+Feature: Go on the blog page
 
   Background:
     Given the url is "http://localhost/login.php"
@@ -9,6 +9,7 @@ Feature: Logout
   Scenario: Successful login with valid credentials
     Then the url is "http://localhost/portal.php"
 
-  Scenario: Log out
-    When clicking on the tag with the xpath "/html/body/div[1]/table/tbody/tr/td[8]/a"
-    Then the url is "http://localhost/login.php"
+  Scenario: Click on link to go to the blog page, new tab
+    When clicking on the tag with the xpath "/html/body/div[1]/table/tbody/tr/td[7]/a"
+    And switching to the new tab
+    Then the url is "http://itsecgames.blogspot.com/"
